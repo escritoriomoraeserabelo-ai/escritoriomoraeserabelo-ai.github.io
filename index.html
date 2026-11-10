@@ -329,6 +329,12 @@
 .mr .contacts a:hover{color:var(--d1)}
 
 /* ---------- 12. RODAPE ---------- */
+.mr .mapa{margin-top:56px; display:grid; grid-template-columns:1fr; gap:18px}
+.mr .mapa-f{position:relative; border-radius:var(--r); overflow:hidden; border:1px solid var(--line-d); aspect-ratio:16/7; min-height:260px; background:#1A1A1A}
+.mr .mapa-f iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05)}
+.mr .mapa-i{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 24px; color:var(--d2); font-size:15px}
+.mr .mapa-i b{color:var(--d1); font-weight:600}
+@media (max-width:640px){.mr .mapa-f{aspect-ratio:1/1}}
 .mr .ft{background:#0B0B0B; color:var(--d3); padding:44px 0 96px; font-size:13.5px; line-height:1.7}
 .mr .ft-g{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:28px 40px}
 .mr .ft .brand img{height:40px}
@@ -636,6 +642,10 @@
         <a href="https://wa.me/5522992096574?text=Ol%C3%A1%21%20Vim%20pelo%20site." target="_blank" rel="noopener">(22) 99209-6574</a>
         <a href="mailto:escritoriomoraeserabelo@gmail.com">escritoriomoraeserabelo@gmail.com</a>
       </div>
+    </div>
+    <div class="mapa rv" id="mr-mapa">
+      <div class="mapa-f"><iframe src="https://www.google.com/maps?q=Rua%20Dez%20de%20Maio%2C%20500%20-%20Itaperuna%20-%20RJ&amp;output=embed&amp;hl=pt-BR" title="Mapa: Moraes &amp; Rabelo, Rua Dez de Maio, 500, Sala 603, Itaperuna/RJ" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      <div class="mapa-i"><span><b>Rua Dez de Maio, 500 &#183; Sala 603</b> &#183; Itaperuna/RJ</span><a class="btn btn-o" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua%20Dez%20de%20Maio%2C%20500%20-%20Itaperuna%20-%20RJ" target="_blank" rel="noopener">Como chegar</a></div>
     </div>
   </div>
 </section>
