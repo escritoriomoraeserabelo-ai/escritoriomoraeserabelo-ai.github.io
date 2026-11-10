@@ -1,0 +1,285 @@
+
+/* ---------- SISTEMA VISUAL ---------- */
+.mr{
+  --bg:#F6F6F5; --bg2:#EBEBEA; --dark:#111111; --dark2:#1A1A1A; --line:#DCDCDA; --line-d:#2C2C2C;
+  --ac:#3B3E42; --ac-h:#1C1D1F; --ac-d:#E4E4E4; --ac-dh:#FFFFFF;
+  --t1:#141414; --t2:#474747; --t3:#686868; --d1:#FFFFFF; --d2:#C6C6C6; --d3:#999999;
+  --ok:#141414; --no:#8A8A8A;
+  --fd:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --fs:'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --fm:'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+  --r:14px; --r-s:10px;
+  --sh:0 1px 2px rgba(17,17,17,.04), 0 12px 32px -14px rgba(17,17,17,.18);
+  font-family:var(--fs); color:var(--t1); background:var(--bg);
+  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:clip;
+}
+.mr *,.mr *::before,.mr *::after{box-sizing:border-box}
+.mr img{max-width:100%; height:auto; display:block}
+.mr h1,.mr h2,.mr h3,.mr p,.mr ul,.mr ol,.mr figure{margin:0; padding:0}
+.mr ul,.mr ol{list-style:none}
+.mr a{color:inherit; text-decoration:none}
+.mr .wrap{max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,56px)}
+.mr .sec{padding:clamp(72px,9vw,120px) 0; position:relative}
+.mr .bg2{background:var(--bg2)}
+.mr .dk{background:var(--dark); color:var(--d1)}
+.mr .eyebrow{font-family:var(--fm); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--ac); display:inline-flex; align-items:center; gap:10px}
+.mr .dk .eyebrow{color:var(--ac-d)}
+.mr .eyebrow svg{flex:none}
+.mr .h2{font-family:var(--fd); font-weight:500; font-size:clamp(36px,4.6vw,58px); line-height:1.04; letter-spacing:-.01em}
+.mr .hl{color:var(--ac); font-style:italic}
+.mr .dk .hl{color:var(--ac-d)}
+.mr .lead{font-size:17px; color:var(--t2); max-width:560px}
+.mr .dk .lead{color:var(--d2)}
+.mr .head{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:20px 40px; margin-bottom:48px}
+.mr .head > div{display:flex; flex-direction:column; gap:16px; max-width:680px}
+
+/* botoes */
+.mr .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:14px 26px; border-radius:var(--r-s); font-family:var(--fs); font-weight:600; font-size:15px; line-height:1.2; transition:background .25s, box-shadow .25s, transform .25s, color .25s, border-color .25s; cursor:pointer; text-align:center}
+.mr .btn svg{flex:none}
+.mr .btn-p{background:var(--ac); color:#fff; box-shadow:0 10px 28px -10px rgba(17,17,17,.45)}
+.mr .btn-p:hover{background:var(--ac-h); color:#fff; box-shadow:0 14px 36px -10px rgba(17,17,17,.6); transform:translateY(-1px)}
+.mr .btn-o{border:1px solid #BDBDBB; color:var(--t1); background:transparent}
+.mr .btn-o:hover{border-color:var(--t1); background:rgba(17,17,17,.04)}
+.mr .dk .btn-o{border-color:#4A4A4A; color:var(--d1)}
+.mr .dk .btn-o:hover{border-color:var(--d1); background:rgba(255,255,255,.06)}
+.mr .dk .btn-p{background:var(--ac-d); color:#141414; box-shadow:0 10px 30px -10px rgba(255,255,255,.25)}
+.mr .dk .btn-p:hover{background:var(--ac-dh); color:#141414}
+.mr .btn-dark{background:#141414; color:#fff}
+.mr .biz .hl,.mr .biz .eyebrow,.mr .ar-hi .eyebrow{color:var(--ac-d)}
+.mr .biz .btn-p,.mr .ar-hi .btn-p{background:var(--ac-d); color:#141414; box-shadow:0 10px 30px -10px rgba(255,255,255,.25)}
+.mr .biz .btn-p:hover,.mr .ar-hi .btn-p:hover{background:#FFFFFF; color:#141414}
+.mr .btn-dark:hover{background:#2A2A2A; color:#fff}
+
+/* revelar ao rolar (CSS puro; sem suporte = aparece normal) */
+@keyframes mrUp{from{opacity:0; transform:translateY(26px)} to{opacity:1; transform:none}}
+@supports (animation-timeline: view()){
+  .mr .rv{animation:mrUp linear both; animation-timeline:view(); animation-range:entry 0% cover 22%}
+}
+@media (prefers-reduced-motion: reduce){
+  .mr .rv{animation:none !important}
+  .mr .mq-track,.mr .car-track{animation:none !important}
+}
+
+/* ---------- 1. MARQUEE ---------- */
+.mr .mq{background:var(--dark); color:var(--d2); overflow:hidden; border-bottom:1px solid var(--line-d)}
+.mr .mq-track{display:flex; width:max-content; animation:mrScroll 42s linear infinite}
+.mr .mq:hover .mq-track{animation-play-state:paused}
+.mr .mq-item{display:inline-flex; align-items:center; gap:18px; padding:11px 18px; font-family:var(--fm); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap}
+.mr .mq-item svg{color:var(--ac-d)}
+@keyframes mrScroll{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+/* ---------- 2. NAV ---------- */
+.mr .nav{position:sticky; top:0; z-index:50; background:rgba(246,246,245,.92); -webkit-backdrop-filter:saturate(1.2) blur(10px); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid var(--line)}
+.mr .nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:12px; padding-bottom:12px}
+.mr .brand{display:flex; align-items:center; gap:12px}
+.mr .brand img{height:36px; width:auto}
+.mr .brand-t{display:flex; flex-direction:column; line-height:1}
+.mr .brand-t b{font-family:var(--fd); font-weight:600; font-size:20px; letter-spacing:.14em}
+.mr .brand-t small{font-family:var(--fm); font-size:9px; letter-spacing:.24em; color:var(--t3); margin-top:5px; text-transform:uppercase}
+.mr .nav .btn{min-height:44px; padding:10px 18px; font-size:14px}
+
+/* ---------- 3. HERO ---------- */
+.mr .hero{padding:clamp(48px,7vw,96px) 0 clamp(64px,8vw,110px); position:relative; overflow:hidden}
+.mr .hero-arc{position:absolute; right:-180px; top:-120px; width:720px; height:720px; color:var(--ac); opacity:.10; pointer-events:none}
+.mr .hero-g{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(40px,6vw,80px); align-items:center}
+.mr .hero-txt{display:flex; flex-direction:column; gap:26px}
+.mr .h1{font-family:var(--fd); font-weight:500; font-size:clamp(44px,5.4vw,76px); line-height:1; letter-spacing:-.015em}
+.mr .hero-btns{display:flex; flex-wrap:wrap; gap:12px}
+.mr .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; border-top:1px solid var(--line); margin-top:8px}
+.mr .stat{padding:18px 16px 0 0; display:flex; flex-direction:column; gap:4px}
+.mr .stat b{font-family:var(--fd); font-weight:600; font-size:30px; line-height:1.05}
+.mr .stat span{font-size:13px; color:var(--t3); line-height:1.4}
+.mr .hero-ph{position:relative; padding:0 18px 18px 0}
+.mr .hero-ph::before{content:''; position:absolute; inset:18px 0 0 18px; border:1px solid var(--ac); border-radius:calc(var(--r) + 6px); opacity:.55}
+.mr .hero-ph img{position:relative; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 18%; border-radius:calc(var(--r) + 6px); box-shadow:var(--sh)}
+.mr .badge{position:absolute; display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:var(--r-s); padding:12px 16px; box-shadow:var(--sh)}
+.mr .badge-a{left:-22px; bottom:52px}
+.mr .badge-b{right:0; top:22px; background:var(--dark); color:var(--d1); border-color:var(--dark)}
+.mr .badge small{display:block; font-family:var(--fm); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--t3)}
+.mr .badge-b small{color:var(--d3)}
+.mr .badge strong{display:block; font-size:14px; font-weight:600; line-height:1.35}
+.mr .badge .ic{width:38px; height:38px; border-radius:50%; background:var(--bg2); color:var(--ac); display:grid; place-items:center; flex:none}
+
+/* ---------- 4. DOR ---------- */
+.mr .pain{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px}
+.mr .pain-c{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:28px 24px 30px; display:flex; flex-direction:column; gap:14px; box-shadow:var(--sh)}
+.mr .num{font-family:var(--fm); font-size:12px; letter-spacing:.12em; color:var(--ac); display:inline-flex; align-items:center; gap:10px}
+.mr .num::after{content:''; width:28px; height:1px; background:currentColor; opacity:.6}
+.mr .pain-c h3{font-family:var(--fd); font-weight:600; font-size:24px; line-height:1.15}
+.mr .pain-c p{font-size:15px; color:var(--t2)}
+.mr .turn{margin-top:56px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:22px}
+.mr .turn p{font-family:var(--fd); font-size:clamp(28px,3.4vw,42px); line-height:1.15; max-width:860px}
+.mr .turn p s{color:var(--t3); text-decoration-color:var(--no); text-decoration-thickness:2px}
+
+/* ---------- 5. SOLUCAO / AREAS ---------- */
+.mr .areas{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px}
+.mr .ar{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:28px 24px; display:flex; flex-direction:column; gap:14px; transition:border-color .25s, transform .25s, box-shadow .25s}
+.mr .ar:hover{border-color:var(--ac); transform:translateY(-3px); box-shadow:var(--sh)}
+.mr .ar .ic{width:48px; height:48px; border-radius:12px; background:var(--bg2); color:var(--ac); display:grid; place-items:center}
+.mr .ar h3{font-family:var(--fd); font-weight:600; font-size:25px; line-height:1.12}
+.mr .ar p{font-size:14.5px; color:var(--t2)}
+.mr .ar-hi{background:var(--dark); color:var(--d1); border-color:var(--dark); justify-content:space-between}
+.mr .ar-hi p{color:var(--d2)}
+.mr .ar-hi .btn{margin-top:6px; min-height:46px; padding:12px 18px; font-size:14px}
+/* empresas */
+.mr .biz{margin-top:28px; background:var(--dark); color:var(--d1); border-radius:calc(var(--r) + 6px); padding:clamp(32px,5vw,64px); display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(32px,5vw,64px); position:relative; overflow:hidden; box-shadow:0 30px 60px -30px rgba(17,17,17,.5)}
+.mr .biz-arc{position:absolute; left:-140px; bottom:-260px; width:520px; height:520px; color:var(--ac-d); opacity:.12; pointer-events:none}
+.mr .biz-l{display:flex; flex-direction:column; gap:20px; position:relative}
+.mr .biz-l .h2{font-size:clamp(34px,4vw,50px)}
+.mr .biz-l p{color:var(--d2); font-size:16px}
+.mr .biz-list{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; position:relative; align-content:center}
+.mr .biz-list li{display:flex; gap:14px; padding:18px 0; border-top:1px solid var(--line-d)}
+.mr .biz-list li svg{color:var(--ac-d); flex:none; margin-top:3px}
+.mr .biz-list b{display:block; font-weight:600; font-size:15.5px}
+.mr .biz-list span{display:block; font-size:14px; color:var(--d3); margin-top:2px}
+
+/* ---------- 6. COMO FUNCIONA ---------- */
+.mr .how-g{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(40px,6vw,88px); align-items:start}
+.mr .how-l{display:flex; flex-direction:column; gap:20px; position:sticky; top:110px}
+.mr .steps{display:flex; flex-direction:column; gap:14px}
+.mr .step{display:grid; grid-template-columns:auto minmax(0,1fr); gap:22px; background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:26px 26px; box-shadow:var(--sh)}
+.mr .step-n{width:56px; height:56px; border-radius:50%; border:1px solid var(--ac); color:var(--ac); display:grid; place-items:center; font-family:var(--fd); font-size:24px; font-weight:600; position:relative}
+.mr .step-tag{font-family:var(--fm); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--t3)}
+.mr .step h3{font-family:var(--fd); font-weight:600; font-size:25px; line-height:1.15; margin:4px 0 6px}
+.mr .step p{font-size:15px; color:var(--t2)}
+
+/* ---------- 7. PRA QUEM E ---------- */
+.mr .fit{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px}
+.mr .fit-c{border-radius:var(--r); padding:clamp(28px,4vw,44px); display:flex; flex-direction:column; gap:22px}
+.mr .fit-y{background:#fff; border:1px solid var(--line); box-shadow:var(--sh)}
+.mr .fit-n{background:transparent; border:1px dashed #C4C4C2}
+.mr .fit-h{display:flex; align-items:center; gap:14px; font-family:var(--fd); font-weight:600; font-size:28px; line-height:1.1}
+.mr .dot{width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; color:#fff}
+.mr .dot-y{background:var(--ok)}
+.mr .dot-n{background:var(--no)}
+.mr .fit ul{display:flex; flex-direction:column}
+.mr .fit li{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line); font-size:15.5px; color:var(--t2)}
+.mr .fit li svg{flex:none; margin-top:3px}
+.mr .fit-y li svg{color:var(--ok)}
+.mr .fit-n li svg{color:var(--no)}
+.mr .fit-n li{color:var(--t2)}
+
+/* ---------- 8. PRIMEIRA CONSULTA ---------- */
+.mr .offer{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,5vw,64px); align-items:center}
+.mr .card-o{background:var(--dark2); border:1px solid var(--line-d); border-radius:calc(var(--r) + 6px); padding:clamp(30px,4vw,48px); display:flex; flex-direction:column; gap:20px; position:relative; box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 30px 80px -30px rgba(255,255,255,.14)}
+.mr .tag{align-self:flex-start; font-family:var(--fm); font-size:11px; letter-spacing:.16em; text-transform:uppercase; background:rgba(255,255,255,.10); color:var(--ac-d); border:1px solid rgba(255,255,255,.14); padding:7px 12px; border-radius:999px}
+.mr .card-o .val{font-family:var(--fd); font-weight:500; font-size:clamp(40px,4.6vw,56px); line-height:1}
+.mr .card-o p{color:var(--d2); font-size:15.5px}
+.mr .card-o .btn{width:100%}
+.mr .seal{display:flex; gap:14px; align-items:flex-start; border-top:1px solid var(--line-d); padding-top:18px}
+.mr .seal .ic{width:40px; height:40px; border-radius:50%; border:1px solid var(--ac-d); color:var(--ac-d); display:grid; place-items:center; flex:none}
+.mr .seal small{display:block; font-family:var(--fm); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ac-d)}
+.mr .seal span{display:block; font-size:14px; color:var(--d2)}
+.mr .inc{display:flex; flex-direction:column; gap:22px}
+.mr .inc ul li{display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-top:1px solid var(--line-d); font-size:16px; color:var(--d1)}
+.mr .inc ul li:last-child{border-bottom:1px solid var(--line-d)}
+.mr .inc ul li svg{color:var(--ac-d); flex:none; margin-top:4px}
+
+/* ---------- 9. SOBRE ---------- */
+.mr .about{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:clamp(40px,6vw,80px); align-items:center}
+.mr .founders{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px}
+.mr .fd{display:flex; flex-direction:column; gap:14px}
+.mr .fd img{width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 15%; border-radius:var(--r); box-shadow:var(--sh); background:var(--bg2)}
+.mr .fd:nth-child(2){margin-top:48px}
+.mr .fd b{font-family:var(--fd); font-weight:600; font-size:26px; line-height:1.1; display:block}
+.mr .fd span{font-size:13.5px; color:var(--t3); display:block}
+.mr .fd em{font-style:normal; font-family:var(--fm); font-size:11.5px; letter-spacing:.1em; color:var(--ac); display:block; margin-top:4px}
+.mr .about-t{display:flex; flex-direction:column; gap:22px}
+.mr .about-t p{color:var(--t2); font-size:16.5px}
+.mr .about-t p strong{color:var(--t1)}
+.mr .nums{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--t1); margin-top:6px}
+.mr .nums div{padding:18px 12px 0 0}
+.mr .nums b{font-family:var(--fd); font-weight:600; font-size:34px; line-height:1; display:block}
+.mr .nums span{font-size:13px; color:var(--t3); display:block; margin-top:6px; line-height:1.4}
+
+/* ---------- 10. CARROSSEL SITUACOES ---------- */
+.mr .car{overflow:hidden; padding:8px 0 4px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mr .car-track{display:flex; gap:18px; width:max-content; animation:mrScroll 70s linear infinite; padding-left:18px}
+.mr .car:hover .car-track{animation-play-state:paused}
+.mr .q{width:330px; flex:none; background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:26px 24px; display:flex; flex-direction:column; gap:14px; box-shadow:var(--sh)}
+.mr .q-tag{font-family:var(--fm); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ac)}
+.mr .q h3{font-family:var(--fd); font-weight:600; font-size:24px; line-height:1.15; flex-grow:1}
+.mr .q a{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:14px; padding-top:14px; border-top:1px solid var(--line); min-height:44px; color:var(--t1); transition:color .2s}
+.mr .q a:hover{color:var(--ac)}
+.mr .note{font-size:13px; color:var(--t3); margin-top:22px}
+
+/* ---------- 11. CTA FINAL ---------- */
+.mr .final{position:relative}
+.mr .final-c{max-width:880px; margin:0 auto; text-align:center; background:var(--dark2); border:1px solid var(--line-d); border-radius:24px; padding:clamp(40px,6vw,80px) clamp(24px,5vw,72px); display:flex; flex-direction:column; align-items:center; gap:24px; position:relative; overflow:hidden; box-shadow:0 0 0 1px rgba(255,255,255,.10), 0 0 90px -20px rgba(255,255,255,.16)}
+.mr .final-c .wm{position:absolute; right:-40px; bottom:-30px; width:260px; opacity:.06; pointer-events:none}
+.mr .final-c .h2{font-size:clamp(38px,5vw,62px)}
+.mr .final-c .lead{margin:0 auto}
+.mr .final-btns{display:flex; flex-wrap:wrap; justify-content:center; gap:12px}
+.mr .contacts{display:flex; flex-wrap:wrap; justify-content:center; gap:8px 28px; font-family:var(--fm); font-size:13px; color:var(--d3)}
+.mr .contacts a:hover{color:var(--d1)}
+
+/* ---------- 12. RODAPE ---------- */
+.mr .mapa{margin-top:56px; display:grid; grid-template-columns:1fr; gap:18px}
+.mr .mapa-f{position:relative; border-radius:var(--r); overflow:hidden; border:1px solid var(--line-d); aspect-ratio:16/7; min-height:260px; background:#1A1A1A}
+.mr .mapa-f iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05)}
+.mr .mapa-i{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 24px; color:var(--d2); font-size:15px}
+.mr .mapa-i b{color:var(--d1); font-weight:600}
+@media (max-width:640px){.mr .mapa-f{aspect-ratio:1/1}}
+.mr .ft{background:#0B0B0B; color:var(--d3); padding:44px 0 96px; font-size:13.5px; line-height:1.7}
+.mr .ft-g{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:28px 40px}
+.mr .ft .brand img{height:40px}
+.mr .ft .brand-t b{color:var(--d1)}
+.mr .ft .brand-t small{color:var(--d3)}
+.mr .ft-c{display:flex; flex-direction:column; gap:2px}
+.mr .ft-c strong{color:var(--d1); font-weight:600; font-family:var(--fm); font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px}
+.mr .ft a:hover{color:var(--d1)}
+.mr .ft-b{border-top:1px solid #222; margin-top:32px; padding-top:20px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 28px; font-size:12.5px}
+
+/* ---------- BOTAO FLUTUANTE ---------- */
+.mr .float{position:fixed; right:20px; bottom:20px; z-index:60; display:inline-flex; align-items:center; gap:10px; background:#141414; color:#fff; border-radius:999px; padding:14px 20px 14px 16px; font-weight:600; font-size:14px; box-shadow:0 12px 30px -8px rgba(17,17,17,.55), 0 0 0 4px rgba(255,255,255,.18); transition:transform .25s, background .25s}
+.mr .float:hover{transform:translateY(-2px); background:#2A2A2A; color:#fff}
+.mr .float svg{color:var(--ac-d)}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width:1024px){
+  .mr .pain,.mr .areas{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .mr .hero-g,.mr .biz,.mr .how-g,.mr .offer,.mr .about{grid-template-columns:minmax(0,1fr)}
+  .mr .how-l{position:static}
+  .mr .hero-ph{max-width:520px}
+  .mr .badge-a{left:-6px}
+}
+@media (max-width:640px){
+  .mr .pain,.mr .areas,.mr .fit,.mr .biz-list{grid-template-columns:minmax(0,1fr)}
+  .mr .stats,.mr .nums{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mr .stat b,.mr .nums b{font-size:24px}
+  .mr .brand-t small{display:none}
+  .mr .nav .btn span{display:none}
+  .mr .hero-btns .btn{width:100%}
+  .mr .badge{padding:10px 12px}
+  .mr .badge-a{bottom:36px}
+  .mr .badge strong{font-size:13px}
+  .mr .fd:nth-child(2){margin-top:28px}
+  .mr .q{width:280px}
+  .mr .float{padding:14px}
+  .mr .float span{display:none}
+}
+
+.mr .crumb{font-family:var(--fm); font-size:12px; letter-spacing:.06em; color:var(--t3); padding-top:28px}
+.mr .crumb a{color:var(--t2); text-decoration:underline; text-underline-offset:3px}
+.mr .sit{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:40px}
+.mr .sit .ar h3{font-size:23px}
+.mr .sit .num{font-family:var(--fm); font-size:12px; color:var(--t3); letter-spacing:.1em}
+.mr .faq{margin-top:36px; display:flex; flex-direction:column; gap:12px; max-width:880px}
+.mr .faq details{background:#fff; border:1px solid var(--line); border-radius:var(--r-s); padding:20px 24px}
+.mr .faq summary{cursor:pointer; font-weight:600; font-size:17px; color:var(--t1); list-style:none; display:flex; justify-content:space-between; gap:16px}
+.mr .faq summary::-webkit-details-marker{display:none}
+.mr .faq summary::after{content:'+'; font-family:var(--fm); font-size:20px; line-height:1; color:var(--ac)}
+.mr .faq details[open] summary::after{content:'\2212'}
+.mr .faq details p{margin-top:12px; color:var(--t2); font-size:15.5px}
+.mr .docs{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px 28px; margin-top:32px}
+.mr .docs li{display:flex; gap:12px; align-items:flex-start; color:var(--t2)}
+.mr .docs li svg{flex:none; margin-top:4px; color:var(--ac)}
+.mr .note{margin-top:28px; font-size:14px; color:var(--t3); max-width:760px}
+.mr .outras{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px}
+.mr .outras a{border:1px solid var(--line-d); border-radius:999px; padding:10px 18px; color:var(--d2); font-size:14px}
+.mr .outras a:hover{color:var(--d1); border-color:var(--d2)}
+.mr .area-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px}
+.mr .area-links a{border:1px solid var(--line); background:#fff; border-radius:999px; padding:10px 18px; font-size:14px; color:var(--t1)}
+.mr .area-links a:hover{border-color:var(--ac)}
